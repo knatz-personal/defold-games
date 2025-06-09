@@ -1,0 +1,14 @@
+function init(self)
+    local text_node = gui.get_node("text")
+    if text_node then
+        gui.set(text_node, "scale.y", 1)
+        local function bounce()
+            gui.animate(text_node, "scale.y", 1.3, gui.EASING_INOUTSINE, 0.4, 0, function()
+                gui.animate(text_node, "scale.y", 1, gui.EASING_INOUTSINE, 0.4, 0, bounce)
+            end)
+        end
+        bounce()
+    else
+        print("[Splash GUI] Text node NOT found! Animation skipped.")
+    end
+end

@@ -1,0 +1,13 @@
+[project]
+title = Defold Game Template
+
+[bootstrap]
+main_collection = /main.collectionc
+
+[display]
+width = 1280
+height = 720
+
+[script]
+shared_state = 1
+

@@ -1,0 +1,61 @@
+name: "main"
+scale_along_z: 0
+embedded_instances {
+  id: "_splash"
+  data: "components {\n"
+  "  id: \"splash\"\n"
+  "  component: \"/levels/splash/splash.collectionproxy\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "level01"
+  data: "components {\n"
+  "  id: \"level01\"\n"
+  "  component: \"/levels/level01/level01.collectionproxy\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "_menu"
+  data: "components {\n"
+  "  id: \"menu\"\n"
+  "  component: \"/levels/menu/menu.collectionproxy\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "_main"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"label_main\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"MAIN SCENE\\\"\\n"
+  "font: \\\"/assets/fonts/splash.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 630.0\n"
+  "    y: 405.0\n"
+  "  }\n"
+  "  scale {\n"
+  "    x: 0.5\n"
+  "  }\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "__transitions"
+  data: "components {\n"
+  "  id: \"fade\"\n"
+  "  component: \"/transitions/fade/fade.gui\"\n"
+  "}\n"
+  ""
+}

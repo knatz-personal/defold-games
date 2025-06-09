@@ -1,0 +1,63 @@
+local SceneManager = require "modules/scene_manager"
+
+local SPLASH_SCREEN = "main:/_splash#splash"
+local MENU_SCREEN = "main:/_menu#menu"
+
+go.property("duration", 2.0)
+
+-- Splash screen controller script
+-- This script manages the splash screen, displaying it for a set duration
+-- before transitioning to the main menu screen.
+-- It initializes the scene manager, loads the splash screen,
+-- and handles the transition to the menu screen after the specified duration.
+function init(self)
+    print("[Splash] Init called for splash_controller.script")
+    self.timer = 0
+    self.transitioned = false
+    msg.post(".", "acquire_input_focus")
+end
+
+function update(self, dt)
+    print("[Splash] Timer:", self.timer or 0)
+
+    if self.transitioned then
+        return
+    end
+
+    self.timer = self.timer + dt
+
+    if self.timer >= self.duration then
+        self.transitioned = true  -- ✅ prevent repeat triggers
+
+        SceneManager.unload(SPLASH_SCREEN, function()
+            print("[Splash] Unloaded splash screen, transitioning to menu screen")
+            msg.post(".", "release_input_focus")
+            SceneManager.load(MENU_SCREEN)
+        end)
+    end
+end
+
+
+function final(self)
+    msg.post(".", "release_input_focus")
+end
+
+-- function update(self, dt)
+--     print("[Splash] Timer:", self.timer or 0)
+--     self.timer = self.timer + dt
+--     SceneManager.unload(SPLASH_SCREEN, function()
+--         print("[Splash] Unloaded splash screen, transitioning to menu screen")
+--         -- Release input focus before loading the menu screen
+--         msg.post(".", "release_input_focus")
+--         -- Load the menu screen after the splash screen
+--         -- This will also set the current scene to the menu screen
+--         -- and load the corresponding proxy.
+--         SceneManager.load(MENU_SCREEN)
+--     end)
+--     self.timer = self.duration + 1
+-- end
+
+
+function on_message(self, message_id, message, sender)
+    SceneManager.on_message(self, message_id, message, sender)
+end

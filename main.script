@@ -1,0 +1,12 @@
+local SceneManager = require "modules/scene_manager"
+
+local SPLASH_SCREEN = "main:/_splash#splash"
+
+function init(self)
+    SceneManager.init()
+    SceneManager.load(SPLASH_SCREEN)
+end
+
+function on_message(self, message_id, message, sender)
+    SceneManager.on_message(self, message_id, message, sender)
+end

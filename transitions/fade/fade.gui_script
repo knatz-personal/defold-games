@@ -1,0 +1,22 @@
+local SceneManager = require "modules/scene_manager"
+
+function init(self)
+    SceneManager.set_transition_handler(msg.url())
+    self.fade_node = gui.get_node("fade")
+    gui.set_color(self.fade_node, vmath.vector4(0, 0, 0, 0)) -- fully transparent at start
+end
+
+local function run_fade(node, target_alpha, callback_id, sender)
+    gui.animate(node, "color.w", target_alpha, gui.EASING_INOUTSINE, 2, 0, 
+    function()
+        msg.post(sender, "transition_complete", { callback_id = callback_id })
+    end)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("fade_out") then
+        run_fade(self.fade_node, 1, message.callback_id, sender)
+    elseif message_id == hash("fade_in") then
+        run_fade(self.fade_node, 0, message.callback_id, sender)
+    end
+end

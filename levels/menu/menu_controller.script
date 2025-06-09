@@ -1,0 +1,16 @@
+local SceneManager = require "modules/scene_manager"
+
+local MENU_SCREEN = "main:/_menu#menu"
+
+function init(self)
+    print("[Menu] menu_controller.script initialized")
+    msg.post(".", "acquire_input_focus")
+end
+
+function final(self)
+    msg.post(".", "release_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+    SceneManager.on_message(self, message_id, message, sender)
+end
