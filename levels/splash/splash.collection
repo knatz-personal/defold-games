@@ -1,0 +1,6 @@
+name: "splashc"
+instances {
+  id: "splash"
+  prototype: "/levels/splash/splash.go"
+}
+scale_along_z: 0

@@ -1,0 +1,6 @@
+name: "menu"
+instances {
+  id: "menu"
+  prototype: "/levels/menu/menu.go"
+}
+scale_along_z: 0
