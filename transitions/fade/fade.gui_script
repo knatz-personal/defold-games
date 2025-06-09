@@ -14,9 +14,9 @@ local function run_fade(node, target_alpha, callback_id, sender)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == hash("fade_out") then
+    if message_id == hash("transition_out") then
         run_fade(self.fade_node, 1, message.callback_id, sender)
-    elseif message_id == hash("fade_in") then
+    elseif message_id == hash("transition_in") then
         run_fade(self.fade_node, 0, message.callback_id, sender)
     end
 end

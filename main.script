@@ -4,6 +4,7 @@ local SPLASH_SCREEN = "main:/_splash#splash"
 
 function init(self)
     SceneManager.init()
+    print("[Main] SceneManager initialized")
     SceneManager.load(SPLASH_SCREEN)
 end
 
