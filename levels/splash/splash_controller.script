@@ -18,8 +18,6 @@ function init(self)
 end
 
 function update(self, dt)
-    print("[Splash] Timer:", self.timer or 0)
-
     if self.transitioned then
         return
     end
@@ -27,36 +25,18 @@ function update(self, dt)
     self.timer = self.timer + dt
 
     if self.timer >= self.duration then
-        self.transitioned = true  -- ✅ prevent repeat triggers
-
+        self.transitioned = true
         SceneManager.unload(SPLASH_SCREEN, function()
             print("[Splash] Unloaded splash screen, transitioning to menu screen")
-            msg.post(".", "release_input_focus")
             SceneManager.load(MENU_SCREEN)
+            msg.post(".", "release_input_focus")
         end)
     end
 end
 
-
 function final(self)
     msg.post(".", "release_input_focus")
 end
-
--- function update(self, dt)
---     print("[Splash] Timer:", self.timer or 0)
---     self.timer = self.timer + dt
---     SceneManager.unload(SPLASH_SCREEN, function()
---         print("[Splash] Unloaded splash screen, transitioning to menu screen")
---         -- Release input focus before loading the menu screen
---         msg.post(".", "release_input_focus")
---         -- Load the menu screen after the splash screen
---         -- This will also set the current scene to the menu screen
---         -- and load the corresponding proxy.
---         SceneManager.load(MENU_SCREEN)
---     end)
---     self.timer = self.duration + 1
--- end
-
 
 function on_message(self, message_id, message, sender)
     SceneManager.on_message(self, message_id, message, sender)

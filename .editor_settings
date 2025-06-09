@@ -82,10 +82,6 @@
         :scene
       ]
       [
-        "/levels/splash/splash.gui"
-        :scene
-      ]
-      [
         "/levels/splash/splash.collection"
         :scene
       ]
@@ -99,6 +95,10 @@
       ]
       [
         "/levels/menu/menu.collection"
+        :scene
+      ]
+      [
+        "/levels/splash/splash.gui"
         :scene
       ]
     ]
